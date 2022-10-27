@@ -1,17 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+class Canvas extends React.Component{
+    render() {
+        return(
+            <div className="Canvas">
+                <Box id="Customers"></Box>
+                <Box id="Transport"></Box>
+            </div> 
+        );
+    }
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+class Box extends React.Component{
+    render(){
+        return(
+            <div className="Box">
+                <h1>{this.props.id}</h1>
+                <ListItem id="Enron"/>
+                <ListItem id="Kodak"/>
+            </div>
+        );
+    }
+}
+
+class ListItem extends React.Component{
+    render(){
+        return(
+            <span className="ListItem">
+                <p>{this.props.id}</p>
+            </span>
+        );
+    }
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Canvas />);
