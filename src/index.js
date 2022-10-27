@@ -18,8 +18,12 @@ class Box extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            listItems: ["Enron","Kodak"],
+            listItems: ["Enron","Kodak","Gateway"],
         }
+    }
+
+    deleteItem(i) {
+        console.log("Delete Item: " + i);
     }
 
     render(){
@@ -27,7 +31,7 @@ class Box extends React.Component{
         const listItems = this.state.listItems.map((value,index)=>{
             return(
                 <li key={index}>
-                    <ListItem value={value} index={index}/>
+                    <ListItem value={value} index={index} deleteItem={() => this.deleteItem(index)}/>
                 </li>
             );
         });
@@ -48,7 +52,7 @@ class ListItem extends React.Component{
         return(
             <div className="ListItem">
                 {this.props.value}
-                <button>X</button>
+                <button onClick={this.props.deleteItem}>X</button>
             </div>
         );
     }
