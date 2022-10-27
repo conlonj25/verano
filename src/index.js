@@ -26,14 +26,18 @@ class Box extends React.Component{
 
         const listItems = this.state.listItems.map((value,index)=>{
             return(
-                <li key={index}>{value}</li>
+                <li key={index}>
+                    <ListItem value={value} index={index}/>
+                </li>
             );
         });
 
         return(
             <div className="Box">
                 <h1>{this.props.id}</h1>
-                {listItems}
+                <ul>
+                    {listItems}
+                </ul>
             </div>
         );
     }
@@ -43,7 +47,7 @@ class ListItem extends React.Component{
     render(){
         return(
             <div className="ListItem">
-                {this.props.id}
+                {this.props.value}
                 <button>X</button>
             </div>
         );
