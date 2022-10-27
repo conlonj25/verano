@@ -14,12 +14,26 @@ class Canvas extends React.Component{
 }
 
 class Box extends React.Component{
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            listItems: ["Enron","Kodak"],
+        }
+    }
+
     render(){
+
+        const listItems = this.state.listItems.map((value,index)=>{
+            return(
+                <li key={index}>{value}</li>
+            );
+        });
+
         return(
             <div className="Box">
                 <h1>{this.props.id}</h1>
-                <ListItem id="Enron"/>
-                <ListItem id="Kodak"/>
+                {listItems}
             </div>
         );
     }
@@ -28,9 +42,10 @@ class Box extends React.Component{
 class ListItem extends React.Component{
     render(){
         return(
-            <span className="ListItem">
-                <p>{this.props.id}</p>
-            </span>
+            <div className="ListItem">
+                {this.props.id}
+                <button>X</button>
+            </div>
         );
     }
 }
