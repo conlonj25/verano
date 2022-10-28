@@ -30,6 +30,14 @@ class Box extends React.Component{
         })
     }
 
+    addItem(value) {
+        const newListItems = this.state.listItems.slice();
+        newListItems.push(value);
+        this.setState({
+            listItems: newListItems,
+        })
+    }
+
     render(){
 
         const listItems = this.state.listItems.map((value,index)=>{
@@ -46,6 +54,7 @@ class Box extends React.Component{
                 <ul>
                     {listItems}
                 </ul>
+                <button onClick={()=>this.addItem("Mitsubishi")}>+</button>
             </div>
         );
     }
