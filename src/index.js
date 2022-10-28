@@ -23,7 +23,11 @@ class Box extends React.Component{
     }
 
     deleteItem(i) {
-        console.log("Delete Item: " + i);
+        const newListItems = this.state.listItems.slice();
+        newListItems.splice(i,1);
+        this.setState({
+            listItems: newListItems,
+        })
     }
 
     render(){
