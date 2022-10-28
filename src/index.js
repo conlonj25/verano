@@ -30,22 +30,6 @@ class Box extends React.Component{
         })
     }
 
-    addItem(value) {
-        const newListItems = this.state.listItems.slice();
-        newListItems.push(value);
-        this.setState({
-            listItems: newListItems,
-        })
-    }
-
-    updateItem(i, newValue) {
-        const newListItems = this.state.listItems.slice();
-        newListItems[i] = newValue;
-        this.setState({
-            listItems: newListItems,
-        })
-    }
-
     render(){
 
         const listItems = this.state.listItems.map((value,index)=>{
@@ -62,8 +46,6 @@ class Box extends React.Component{
                 <ul>
                     {listItems}
                 </ul>
-                <button onClick={()=>this.addItem("Mitsubishi")}>+</button>
-                <button onClick={()=>this.updateItem(2,"GE")}>?</button>
             </div>
         );
     }
@@ -73,7 +55,7 @@ class ListItem extends React.Component{
     render(){
         return(
             <div className="ListItem">
-                <input type="text" value={this.props.value}></input>
+                {this.props.value}
                 <button onClick={this.props.deleteItem}>X</button>
             </div>
         );
