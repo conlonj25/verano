@@ -20,8 +20,17 @@ class Box extends React.Component{
         this.state = {
             listItems: ["Enron","Kodak","Gateway"],
         }
-        this.deleteItem = this.deleteItem.bind(this);
         this.addItem = this.addItem.bind(this);
+        this.deleteItem = this.deleteItem.bind(this);
+        this.editItem = this.editItem.bind(this);
+    }
+
+    addItem() {
+        let newListItems = this.state.listItems;
+        newListItems.push("Waystar Royco");
+        this.setState({
+            listItems: newListItems,
+        })
     }
 
     deleteItem(i) {
@@ -32,9 +41,9 @@ class Box extends React.Component{
         })
     }
 
-    addItem() {
+    editItem(i, newValue) {
         let newListItems = this.state.listItems;
-        newListItems.push("Waystar Royco");
+        newListItems[i] = newValue;
         this.setState({
             listItems: newListItems,
         })
@@ -49,6 +58,7 @@ class Box extends React.Component{
                         value={value}
                         index={index}
                         deleteItem={this.deleteItem}
+                        editItem={this.editItem}
                     />
                 </li>
             );
@@ -72,10 +82,16 @@ class ListItem extends React.Component{
         this.props.deleteItem(this.props.index);
     }
 
+    handleChangeHelper = (event) => {
+        console.log("Called handleChangeHelper");
+        console.log(event.target.value);
+        this.props.editItem(this.props.index, event.target.value);
+    }
+
     render(){
         return(
             <div className="ListItem">
-                <input type="text" value={this.props.value}></input>
+                <input type="text" value={this.props.value} onChange={this.handleChangeHelper}></input>
                 <button onClick={this.deleteItemHelper}>X</button>
             </div>
         );
