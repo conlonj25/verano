@@ -21,11 +21,20 @@ class Box extends React.Component{
             listItems: ["Enron","Kodak","Gateway"],
         }
         this.deleteItem = this.deleteItem.bind(this);
+        this.addItem = this.addItem.bind(this);
     }
 
     deleteItem(i) {
         let newListItems = this.state.listItems;
-        let a = newListItems.splice(i,1);
+        newListItems.splice(i,1);
+        this.setState({
+            listItems: newListItems,
+        })
+    }
+
+    addItem() {
+        let newListItems = this.state.listItems;
+        newListItems.push("Waystar Royco");
         this.setState({
             listItems: newListItems,
         })
@@ -51,6 +60,7 @@ class Box extends React.Component{
                 <ul>
                     {listItems}
                 </ul>
+                <button onClick={this.addItem}>+</button>
             </div>
         );
     }
