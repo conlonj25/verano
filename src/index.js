@@ -75,7 +75,7 @@ class ListItem extends React.Component{
     render(){
         return(
             <div className="ListItem">
-                {this.props.value}
+                <input type="text" value={this.props.value}></input>
                 <button onClick={this.deleteItemHelper}>X</button>
             </div>
         );
