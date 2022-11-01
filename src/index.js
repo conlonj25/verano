@@ -20,11 +20,12 @@ class Box extends React.Component{
         this.state = {
             listItems: ["Enron","Kodak","Gateway"],
         }
+        this.deleteItem = this.deleteItem.bind(this);
     }
 
     deleteItem(i) {
-        const newListItems = this.state.listItems.slice();
-        newListItems.splice(i,1);
+        let newListItems = this.state.listItems;
+        let a = newListItems.splice(i,1);
         this.setState({
             listItems: newListItems,
         })
@@ -35,7 +36,11 @@ class Box extends React.Component{
         const listItems = this.state.listItems.map((value,index)=>{
             return(
                 <li key={index}>
-                    <ListItem value={value} index={index} deleteItem={() => this.deleteItem(index)}/>
+                    <ListItem
+                        value={value}
+                        index={index}
+                        deleteItem={this.deleteItem}
+                    />
                 </li>
             );
         });
@@ -52,11 +57,16 @@ class Box extends React.Component{
 }
 
 class ListItem extends React.Component{
+
+    deleteItemHelper = () => {
+        this.props.deleteItem(this.props.index);
+    }
+
     render(){
         return(
             <div className="ListItem">
                 {this.props.value}
-                <button onClick={this.props.deleteItem}>X</button>
+                <button onClick={this.deleteItemHelper}>X</button>
             </div>
         );
     }
