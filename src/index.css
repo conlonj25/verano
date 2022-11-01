@@ -1,0 +1,34 @@
+.canvas {
+    width: 1000px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.row1 {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 3;
+}
+
+.row2 {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.vert-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.box {
+    background-color: pink;
+    outline-style: solid;
+    flex-grow: 1;
+}
+
+.box > h1 {
+    background-color: pink;
+}
