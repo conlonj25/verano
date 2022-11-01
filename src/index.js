@@ -5,10 +5,36 @@ import './index.css';
 class Canvas extends React.Component{
     render() {
         return(
-            <div className="Canvas">
-                <Box id="Customers"></Box>
-                <Box id="Transport"></Box>
-            </div> 
+            <div class="canvas">
+                <div class="row1">
+                    <div class="vert-container">
+                        <Box className="box" id="partners"/>
+                    </div>
+                    <div class="vert-container">
+                        <Box className="box" id="activities"/>
+                        <Box className="box" id="resources"/>
+                    </div>
+                    <div class="vert-container">
+                        <Box className="box" id="value"/>
+                    </div>
+                    <div class="vert-container">
+                        <Box className="box" id="relationships"/>
+                        <Box className="box" id="channels"/>
+                    </div>
+                    <div class="vert-container">
+                        <Box className="box" id="segments"/>
+                    </div>
+                </div>
+
+                <div class="row2">
+                    <div class="vert-container">
+                        <Box className="box" id="structure"/>
+                    </div>
+                    <div class="vert-container">
+                        <Box className="box" id="revenue"/>
+                    </div>
+                </div>
+            </div>
         );
     }
 }
@@ -18,7 +44,7 @@ class Box extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            listItems: ["Enron","Kodak","Gateway"],
+            listItems: [],
         }
         this.addItem = this.addItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
@@ -27,7 +53,7 @@ class Box extends React.Component{
 
     addItem() {
         let newListItems = this.state.listItems;
-        newListItems.push("Waystar Royco");
+        newListItems.push("");
         this.setState({
             listItems: newListItems,
         })
@@ -65,7 +91,7 @@ class Box extends React.Component{
         });
 
         return(
-            <div className="Box">
+            <div className="box">
                 <h1>{this.props.id}</h1>
                 <ul>
                     {listItems}
@@ -82,16 +108,14 @@ class ListItem extends React.Component{
         this.props.deleteItem(this.props.index);
     }
 
-    handleChangeHelper = (event) => {
-        console.log("Called handleChangeHelper");
-        console.log(event.target.value);
+    editItemHelper = (event) => {
         this.props.editItem(this.props.index, event.target.value);
     }
 
     render(){
         return(
             <div className="ListItem">
-                <input type="text" value={this.props.value} onChange={this.handleChangeHelper}></input>
+                <input type="text" value={this.props.value} onChange={this.editItemHelper}></input>
                 <button onClick={this.deleteItemHelper}>X</button>
             </div>
         );
@@ -99,4 +123,4 @@ class ListItem extends React.Component{
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Canvas />);
+root.render(<Canvas />);    
