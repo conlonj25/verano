@@ -96,7 +96,7 @@ class Box extends React.Component{
                 <ul>
                     {listItems}
                 </ul>
-                <button onClick={this.addItem}>+</button>
+                <button className="AddButton" onClick={this.addItem}>+</button>
             </div>
         );
     }
