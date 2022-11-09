@@ -123,4 +123,4 @@ class ListItem extends React.Component{
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Canvas />);    
+root.render(<Canvas />);
